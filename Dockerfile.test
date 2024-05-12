@@ -5,4 +5,6 @@ WORKDIR /app
 ADD main.py .
 ADD test_main.py .
 
+RUN pip install psutil
+
 CMD ["python", "-m", "unittest", "test_main.py"]
