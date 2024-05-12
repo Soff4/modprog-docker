@@ -4,6 +4,4 @@ WORKDIR /app
 
 ADD test_main.py .
 
-RUN pip install unitest
-
 CMD ["python", "-m", "unittest", "test_main.py"]
