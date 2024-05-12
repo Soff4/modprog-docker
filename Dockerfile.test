@@ -2,6 +2,7 @@ FROM python:3.12
 
 WORKDIR /app
 
+ADD main.py .
 ADD test_main.py .
 
 CMD ["python", "-m", "unittest", "test_main.py"]
