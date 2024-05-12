@@ -7,9 +7,14 @@ jobs:
   build_and_publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build and push the image 
-        run: |
-          docker login --username Soff4 --password ${{ secrets.GH_PAT }} ghcr.io
-          docker build . --tag ghcr.io/soff4/modprog-project-ghcr:latest
-          docker push ghcr.io/soff4/modprog-project-ghcr:latest
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Login to GitHub Container Registry
+        run: docker login --username ${{ secrets.GH_NAME }} --password ${{ secrets.GH_PAT }} ghcr.io
+      
+      - name: Build Docker image
+        run: docker build . --tag ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-ghcr:latest
+      
+      - name: Push Docker image to GitHub Container Registry
+        run: docker push ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-ghcr:latest
