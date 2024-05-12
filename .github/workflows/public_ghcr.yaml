@@ -18,3 +18,12 @@ jobs:
       
       - name: Push Docker image to GitHub Container Registry
         run: docker push ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-ghcr:latest
+
+      - name: Build Docker image (test)
+        run: docker build -t ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-test:latest -f Dockerfile.test .
+
+      - name: Push test Docker image to GitHub Container Registry
+        run: docker push ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-test:latest
+
+      - name: Run tests in Docker container
+        run: docker run ghcr.io/${{ secrets.DOCKER_NAME }}/modprog-project-test:latest

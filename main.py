@@ -26,4 +26,4 @@ def get_system_info():
 system_info = get_system_info()
 for info in system_info:
     print(system_info[info])
-    print("\n Оновлено для перевірки докера!")
+    print("\n \Оновлено для перевірки докера!")
