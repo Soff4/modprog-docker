@@ -9,7 +9,7 @@ jobs:
     steps:
       -user: actions/checkout@v3
       -name: Build and push the image 
-        run:
+        run: |
           docker login --username Soff4 --password ${{ secrets.GH_PAT }} ghcr.io
           docker build . --tag ghcr.io/soff4/modprog-project-ghcr:latest
           docker push ghcr.io/soff4/modprog-project-ghcr:latest
